@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head> <title>Breazy</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(235, 235, 195);
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 45px 1px inset rgb(218, 218, 143);
+      }
+      .upart {
+        border: 3px solid blueviolet;
+        display: flex;
+        justify-content: center;
+      }
+      .right{
+        display: flex;
+        flex: 5;
+        flex-direction: column;
+        justify-content: center;
+        border: 3px solid blueviolet;
+        padding: 5px 5px 5px 5px;
+        row-gap: 5px;
+      }
+      .righttop {
+        display: flex;
+        width: 100%;
+        border: 3px solid red;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .grass{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        opacity: 70%
+      }
+      .motiv{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(66, 120, 66);
+        height: 90%;
+        max-height: 300px;
+        max-width: 400px;
+        width: 90%;
+        border-radius: 45px;
+        opacity: 70%;
+        border: 5px solid rgb(15, 92, 0);
+        box-shadow: 0px 10px  40px -10px;
+        padding:20px 45px 35px;
+        overflow: hidden;
+      }
+      .rightbottom{
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center ;
+        border: 3px solid red;
+      }
+
+      .nearby{
+        border: 2px solid black;
+        height: 75%;
+        width: 95%;
+        border-radius: 45px;
+        padding: 25px 20px;
+
+      }
+      .opart{
+        border: 3px solid salmon;
+        display: flex;
+        margin-bottom: 5px;
+      }
+      .sun{
+        width: 200px;
+        height: 200px;
+        background-color: rgb(251, 207, 77);
+        margin-left: -100px;
+        margin-top: -115px;
+        border-radius: 50%;
+        position: absolute
+      }
+
+      .stripes{
+        position: absolute;
+        top: 115px;
+        left: 107px;
+        height: 30%;
+        width: 30%;
+        z-index: 5;
+        opacity: 65%;
+      }
+      .calender{
+        border: 2px solid black;
+        height: 90%;
+        width: 85%;
+        max-width: 600px;
+        border-radius: 45px;
+      }
+
+      .mapbut{
+        text-align: center;
+        text-decoration: none;
+        color: green;
+        margin-top: 20px;
+        border-radius: 10%;
+        border-color: green;
+        background-color: rgb(193, 193, 102);
+        height: 20px;
+        width: 100px; 
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class = "sun">
+      <img class="stripes" src="Adidas-Stripes-PNG-Image.png" > <button></button>
+    </div>
+    <div style="
+      display: flex;
+      flex: 1;">
+      <div style= " width: 100px; padding-left: 10px; padding-top: 6px ;">
+      </div>
+      <div class= 'opart' style= "flex: 1; justify-content: center; color: green; align-items: center; font-size: 35px ; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+        <p>Hi Bob, where will the wind take your today?</p>
+      </div>
+    </div>
+
+    <div style= "
+      display: flex;
+      flex: 7;
+      column-gap: 3px;">
+      <div class = "upart" style="flex: 6;
+      align-items: center; padding-top: 30px;">
+        <div class="calender"></div>
+      </div>
+      <div class="right">
+        <div class="righttop" style="flex: 4.5">
+          <div class="motiv">
+            <p style="font-size: 20px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500">You have saved 4 kg CO2: that's about 4 showers!</p> 
+            <img class="grass" src="48e67000e81dba6398858bcdab569272.png">
+          </div>      
+        </div>
+        <div class="rightbottom" style="flex:8">
+          <div class="nearby">
+            <div id="live-vehicles-list">
+              <p>Requesting your GPS location...</p>
+            </div>
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+            <script>
+              // 1. Ask the browser for the user's real, live GPS location
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                  const userLat = position.coords.latitude;
+                  const userLng = position.coords.longitude;
+                  const userLocation = L.latLng(userLat, userLng);
+                  
+                  document.getElementById("live-vehicles-list").innerHTML = `<p style="font-size: 13px; color: #666; font-family: sans-serif;">Location found. Calculating closest options...</p>`;
+                  
+                  // 2. Fetch data from your Flask server endpoint
+                  fetch('/api/vehicles')
+                    .then(response => response.json())
+                    .then(databaseRecords => {
+                      
+                      // 3. Compute precise distances using Leaflet's formula tool
+                      databaseRecords.forEach(item => {
+                        const targetLatLng = L.latLng(item.lat, item.lng);
+                        item.distance = userLocation.distanceTo(targetLatLng); // Distance in meters
+                      });
+
+                      // Sort full list from absolute closest to furthest
+                      databaseRecords.sort((a, b) => a.distance - b.distance);
+
+                      // 4. Isolate top 3 closest items
+                      const topThree = databaseRecords.slice(0, 3);
+                      let inlineContent = "";
+
+                      // Base card styling matching your original aesthetics
+                      const cardStyle = "margin-bottom: 10px; padding: 10px; border-radius: 15px; font-family: sans-serif; font-size: 13px; background: rgba(255,255,255,0.85); box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: left;";
+
+                      topThree.forEach(item => {
+                        const distanceText = item.distance < 1000 
+                          ? `${Math.round(item.distance)}m away` 
+                          : `${(item.distance / 1000).toFixed(1)}km away`;
+                        const rateText = `€${item.price_per_km.toFixed(2)}/20 minutes`;
+
+                        if (item.category === "Hub") {
+                          const cleanTooltipInventory = item.type.split(', ').join('\n• ');
+
+                          inlineContent += `
+                            <div style="${cardStyle} border-left: 5px solid #3182ce;" title="Available here:\n• ${cleanTooltipInventory}">
+                              <div style="font-weight: bold; color: #2b6cb0; margin-bottom: 2px;">🏢 ${item.brand} (Hub)</div>
+                              <div style="display: flex; justify-content: space-between; color: #4a5568;">
+                                <span>📍 <strong>${distanceText}</strong></span>
+                                <span>💰 From <strong>${rateText}</strong></span>
+                              </div>
+                              <div style="font-size: 10px; color: #718096; font-style: italic; margin-top: 4px; text-align: center; border-top: 1px dashed #e2e8f0; padding-top: 2px;">Hover to see types</div>
+                            </div>
+                          `;
+                        } else {
+                          let emoji = item.type === "Car" ? "🚗" : (item.type === "Scooter" ? "🛴" : "🚲");
+                          
+                          inlineContent += `
+                            <div style="${cardStyle} border-left: 5px solid #e53e3e;">
+                              <div style="font-weight: bold; color: #9b2c2c; margin-bottom: 2px;">${emoji} ${item.brand} ${item.type}</div>
+                              <div style="display: flex; justify-content: space-between; color: #4a5568;">
+                                <span>📍 <strong>${distanceText}</strong></span>
+                                <span>💰 <strong>${rateText}</strong></span>
+                              </div>
+                            </div>
+                          `;
+                        }
+                      });
+
+                      // Inject the cards into your native bubble box frame
+                      document.getElementById("live-vehicles-list").innerHTML = inlineContent;
+                    })
+                    .catch(err => {
+                      document.getElementById("live-vehicles-list").innerHTML = `<p style="color:red; font-size:12px;">Failed connecting to backend database.</p>`;
+                      console.error(err);
+                    });
+                    
+                }, error => {
+                  // Fallback message if user denies GPS location access
+                  document.getElementById("live-vehicles-list").innerHTML = `<p style="color:#e53e3e; font-size:12px; font-family:sans-serif;">GPS Access Denied. Please enable location permissions.</p>`;
+                });
+              } else {
+                document.getElementById("live-vehicles-list").innerHTML = `<p style="color:red; font-size:12px;">Geolocation is not supported by your browser.</p>`;
+              }
+            </script>
+          </div>
+          <a href="sasmap.html" class="mapbut">Go to map</a> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

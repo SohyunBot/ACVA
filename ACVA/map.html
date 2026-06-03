@@ -1,0 +1,3316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Map</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    
+
+    <style>
+        #map {
+            position:absolute;
+            top: 0;
+            bottom:0;
+            left: 0;
+            right: 0;
+        }
+        
+    </style>
+</head>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <!---->>
+    <script>
+      
+        var map = L.map('map').setView([51.4408, 5.47778], 14) //geographical coordinate in decimal], zoom level
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+
+        function zoom() {
+          panTo([51.43030274931614, 5.455312410732961])
+          console.loge("hello world")
+          
+      }
+    
+        var hubs = 
+                {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.5166734515,
+          51.4475207895
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Ambonplein",
+        "omschrijving": "282:33.335.3a.0031: 't Hofke Type 3a Parkeervak",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 6,
+        "geo_point_2d": {
+          "lon": 5.5166734515,
+          "lat": 51.4475207895
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.5215676005,
+          51.44413949
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Broekakkerseweg",
+        "omschrijving": "1462:33.333.2.0048: Muschberg, Geestenberg Type 2 Maatwerk",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 6,
+        "geo_point_2d": {
+          "lon": 5.5215676005,
+          "lat": 51.44413949
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.4929609145,
+          51.47662364
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Winkelcentrum Vaartbroek",
+        "omschrijving": "60:54.543.2.0036: Vaartbroek Type 2 Parkeervak",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 12,
+        "geo_point_2d": {
+          "lon": 5.4929609145,
+          "lat": 51.47662364
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.453420871846531,
+          51.49229410672775
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2601,
+        "zone_id": 53381,
+        "zone_type": "Fysieke Hub",
+        "naam": "Buurtschap Te Veld - 't Kwartiertje",
+        "omschrijving": "53.535.3c.0018: Hub BtV Kwartier",
+        "geography_id": "674bec38-641a-11ee-8c09-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 1,
+        "capaciteit_scooter": 6,
+        "capaciteit_bakfiets": 1,
+        "capaciteit_fiets": 6,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.453420871846531,
+          "lat": 51.49229410672775
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.396882520124644,
+          51.45590857605487
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2618,
+        "zone_id": 55890,
+        "zone_type": "Fysieke Hub",
+        "naam": "Beatrix de Rijkweg",
+        "omschrijving": "63.637.3a.0013: Zone",
+        "geography_id": "96f1b3c0-ecf3-11ee-bf8b-82366b51b915",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 1,
+        "capaciteit_scooter": 4,
+        "capaciteit_bakfiets": 0,
+        "capaciteit_fiets": 5,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.396882520124644,
+          "lat": 51.45590857605487
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.442441816,
+          51.4878436675
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "De Mortel",
+        "omschrijving": "820:52.524.2.0042: Achtse Barrier-Hoeven Type 2 Fietsenstalling",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 6,
+        "geo_point_2d": {
+          "lon": 5.442441816,
+          "lat": 51.4878436675
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.456452749879463,
+          51.45017603265219
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2600,
+        "zone_id": 53382,
+        "zone_type": "Fysieke Hub",
+        "naam": "Station Strijp-S West",
+        "omschrijving": "61.625.3a.0006: Hub Station Strijp-S",
+        "geography_id": "787b7cd0-641a-11ee-a2a6-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 2,
+        "capaciteit_scooter": 4,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 5,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.456452749879463,
+          "lat": 51.45017603265219
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.461193427556656,
+          51.49388015727566
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2602,
+        "zone_id": 53383,
+        "zone_type": "Fysieke Hub",
+        "naam": "Buurtschap Te Veld - Weeg",
+        "omschrijving": "53.535.3a.0016: Hub BtV Boslust/Groenendijk",
+        "geography_id": "7cd773f6-641a-11ee-a2a6-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:41:00Z",
+        "publicatiedatum": "2024-07-23T15:41:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 2,
+        "capaciteit_scooter": 6,
+        "capaciteit_bakfiets": 1,
+        "capaciteit_fiets": 6,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.461193427556656,
+          "lat": 51.49388015727566
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.474977492898675,
+          51.443427011394256
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2608,
+        "zone_id": 53447,
+        "zone_type": "Fysieke Hub",
+        "naam": "Fellenoord",
+        "omschrijving": "11.111.2.0002: 3 Hub Fellenoord",
+        "geography_id": "672a03d8-641b-11ee-a2f3-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 16,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 16,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.474977492898675,
+          "lat": 51.443427011394256
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.47173619243603,
+          51.438203911737915
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2611,
+        "zone_id": 55014,
+        "zone_type": "Fysieke Hub",
+        "naam": "Wilhelminaplein",
+        "omschrijving": "11.112.3a.0010: Hub Wilhelminaplein",
+        "geography_id": "de5d963a-be94-11ee-be5d-5263e3f30f1e",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 2,
+        "capaciteit_scooter": 4,
+        "capaciteit_bakfiets": 0,
+        "capaciteit_fiets": 5,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.47173619243603,
+          "lat": 51.438203911737915
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.4770234925896695,
+          51.44330351127872
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2616,
+        "zone_id": 53497,
+        "zone_type": "Fysieke Hub",
+        "naam": "Vestdijktunnel",
+        "omschrijving": "11.111.2.0004: 7 Hub Vestdijktunnel",
+        "geography_id": "f6cf1122-641b-11ee-a2f3-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 10,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 10,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.4770234925896695,
+          "lat": 51.44330351127872
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.472458991566062,
+          51.44283001157098
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2617,
+        "zone_id": 53446,
+        "zone_type": "Fysieke Hub",
+        "naam": "Stroomhuisje",
+        "omschrijving": "11.111.2.0007: 2 Hub Stroomhuisje",
+        "geography_id": "6345fc9a-641b-11ee-a2f3-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 4,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 4,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.472458991566062,
+          "lat": 51.44283001157098
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.453476572982374,
+          51.49318200718108
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2619,
+        "zone_id": 53380,
+        "zone_type": "Fysieke Hub",
+        "naam": "Buurtschap Te Veld - Achterbosch",
+        "omschrijving": "53.535.3a.0015: Hub BtV Achterbosch",
+        "geography_id": "6070d8d8-641a-11ee-8c09-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 2,
+        "capaciteit_scooter": 6,
+        "capaciteit_bakfiets": 1,
+        "capaciteit_fiets": 6,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.453476572982374,
+          "lat": 51.49318200718108
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.45856387648561,
+          51.4935898076736
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2620,
+        "zone_id": 53385,
+        "zone_type": "Fysieke Hub",
+        "naam": "Buurtschap Te Veld - Langlaar",
+        "omschrijving": "53.535.3a.0019: Hub BtV Langlaar",
+        "geography_id": "86bdc960-641a-11ee-a2a6-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 2,
+        "capaciteit_scooter": 6,
+        "capaciteit_bakfiets": 1,
+        "capaciteit_fiets": 6,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.45856387648561,
+          "lat": 51.4935898076736
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.478018472,
+          51.4800023065
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Belgiëplein",
+        "omschrijving": "43:53.532.2.0050: Tempel Type 2 Fietsenstalling",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 6,
+        "geo_point_2d": {
+          "lon": 5.478018472,
+          "lat": 51.4800023065
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.473337102,
+          51.4502923865
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Woenselse Markt Zuid",
+        "omschrijving": "267:41.412.2.0022: Hemelrijken Type 2 Fietsenstalling",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 6,
+        "geo_point_2d": {
+          "lon": 5.473337102,
+          "lat": 51.4502923865
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.4696957335,
+          51.451113553
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Trompstraat",
+        "omschrijving": "1116:41.412.2.0021: Hemelrijken Type 2 Fietsenstalling",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 6,
+        "geo_point_2d": {
+          "lon": 5.4696957335,
+          "lat": 51.451113553
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.5201327,
+          51.4478938355
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Hageheldlaan",
+        "omschrijving": "1046:33.335.2.0032: 't Hofke Type 2 Parkeervak",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 6,
+        "geo_point_2d": {
+          "lon": 5.5201327,
+          "lat": 51.4478938355
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.4856263095,
+          51.484851944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Sprookjesbosch",
+        "omschrijving": "44:53.532.2.0045: Tempel Type 2 Parkeervak",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 10,
+        "geo_point_2d": {
+          "lon": 5.4856263095,
+          "lat": 51.484851944
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.492110301,
+          51.4778326905
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": null,
+        "zone_id": null,
+        "zone_type": "Fysieke Hub",
+        "naam": "Wijnpeerstraat",
+        "omschrijving": "60:54.543.2.0037: Vaartbroek Type 2 Fietsenstalling",
+        "geography_id": null,
+        "geography_type": null,
+        "startdatum": null,
+        "publicatiedatum": null,
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": null,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": null,
+        "capaciteit_mix": 12,
+        "geo_point_2d": {
+          "lon": 5.492110301,
+          "lat": 51.4778326905
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.467589445403945,
+          51.43718462930906
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2590,
+        "zone_id": 58510,
+        "zone_type": "Fysieke Hub",
+        "naam": "Lodewijk Napoleonplein",
+        "omschrijving": "61.611.3c.0014: Hub",
+        "geography_id": "6919cede-48fa-11ef-a21a-8e54a72a50da",
+        "geography_type": "stop",
+        "startdatum": "2024-06-07T04:00:00Z",
+        "publicatiedatum": "2024-05-31T04:00:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 1,
+        "capaciteit_scooter": 4,
+        "capaciteit_bakfiets": 1,
+        "capaciteit_fiets": 5,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.467589445403945,
+          "lat": 51.43718462930906
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.473248233730035,
+          51.46977810923367
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2591,
+        "zone_id": 53389,
+        "zone_type": "Fysieke Hub",
+        "naam": "WoensXL West",
+        "omschrijving": "51.515.2.0008: Hub WoensXL",
+        "geography_id": "92975d8c-641a-11ee-a2a6-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 20,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 20,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.473248233730035,
+          "lat": 51.46977810923367
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.525037843324615,
+          51.45436885992933
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2592,
+        "zone_id": 53388,
+        "zone_type": "Fysieke Hub",
+        "naam": "Wolvendijk",
+        "omschrijving": "33.335.2.0001: Hub Wolvendijk",
+        "geography_id": "9010a08c-641a-11ee-801c-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 10,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 12,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.525037843324615,
+          "lat": 51.45436885992933
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.478037493572848,
+          51.44336501145089
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2609,
+        "zone_id": 53498,
+        "zone_type": "Fysieke Hub",
+        "naam": "Neckerspoel",
+        "omschrijving": "11.111.2.0003: 8 Hub Neckerspoel",
+        "geography_id": "f92bb93e-641b-11ee-a2f3-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 10,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 0,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.478037493572848,
+          "lat": 51.44336501145089
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.479989356672704,
+          51.4078081398172
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2610,
+        "zone_id": 53508,
+        "zone_type": "Fysieke Hub",
+        "naam": "P+R Genneper Parken",
+        "omschrijving": "2.226.2.0005: Hub P+R Genneper Parken",
+        "geography_id": "c483af20-642a-11ee-8517-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 0,
+        "capaciteit_scooter": 30,
+        "capaciteit_bakfiets": 0,
+        "capaciteit_fiets": 30,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.479989356672704,
+          "lat": 51.4078081398172
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.488391394019675,
+          51.43655821067217
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2612,
+        "zone_id": 55010,
+        "zone_type": "Fysieke Hub",
+        "naam": "Havensingel",
+        "omschrijving": "21.211.3c.0011: Hub Havensingel",
+        "geography_id": "abad7d3c-be93-11ee-8334-5263e3f30f1e",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 1,
+        "capaciteit_scooter": 4,
+        "capaciteit_bakfiets": 1,
+        "capaciteit_fiets": 5,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.488391394019675,
+          "lat": 51.43655821067217
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.423618286745082,
+          51.43573391063202
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2613,
+        "zone_id": 53387,
+        "zone_type": "Fysieke Hub",
+        "naam": "P+R Meerhoven",
+        "omschrijving": "63.633.2.0009: Hub P+R Meerhoven",
+        "geography_id": "8d7ef440-641a-11ee-a2a6-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 20,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 20,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.423618286745082,
+          "lat": 51.43573391063202
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.4579554756232405,
+          51.49434570682053
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2614,
+        "zone_id": 53384,
+        "zone_type": "Fysieke Hub",
+        "naam": "Buurtschap Te Veld - Eikberg",
+        "omschrijving": "53.535.3c.0017: Hub BtV Eikberg",
+        "geography_id": "81b55be0-641a-11ee-a2a6-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:37:00Z",
+        "publicatiedatum": "2024-07-23T15:37:00Z",
+        "einddatum": null,
+        "capaciteit_auto": 2,
+        "capaciteit_scooter": 6,
+        "capaciteit_bakfiets": 1,
+        "capaciteit_fiets": 6,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.4579554756232405,
+          "lat": 51.49434570682053
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          5.48622299340631,
+          51.4378465107047
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "objectid": 2621,
+        "zone_id": 53487,
+        "zone_type": "Fysieke Hub",
+        "naam": "NRE gebouw",
+        "omschrijving": "11.111.2.0012: 52 Hub NRE",
+        "geography_id": "dca64aa4-641b-11ee-a2f3-c602c1905375",
+        "geography_type": "stop",
+        "startdatum": "2024-07-23T15:41:00Z",
+        "publicatiedatum": "2024-07-23T15:41:00Z",
+        "einddatum": null,
+        "capaciteit_auto": null,
+        "capaciteit_scooter": 3,
+        "capaciteit_bakfiets": null,
+        "capaciteit_fiets": 3,
+        "capaciteit_mix": null,
+        "geo_point_2d": {
+          "lon": 5.48622299340631,
+          "lat": 51.4378465107047
+        }
+      }
+    }
+  ]
+}
+
+var hubIcon = L.icon({
+    iconUrl: 'hubmarker.png',  
+    iconSize:     [38, 43], // size of the icon
+    iconAnchor:   [19, 26], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+//L.geoJSON(hubs).addTo(map) HUBSSS
+L.geoJSON(hubs, {
+
+  pointToLayer: function (feature, latlng) {
+    return L.marker(latlng, {icon: hubIcon});
+  },
+
+  onEachFeature: function (feature, layer) {
+
+    const p = feature.properties;
+
+    layer.bindPopup(`
+      <b>${p.naam}</b><br><br>
+
+      🚗 Auto: ${p.capaciteit_auto ?? 0}<br>
+      🛵 Scooter: ${p.capaciteit_scooter ?? 0}<br>
+      🚲 Bakfiets: ${p.capaciteit_bakfiets ?? 0}<br>
+      🚴 Fiets: ${p.capaciteit_fiets ?? 0}
+    `);
+
+  }
+
+}).addTo(map);
+
+//VEHICLES
+
+const vehicles = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.444546,
+          51.452888
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_01",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 68,
+          "last_updated": "2026-05-23T11:03:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.470176,
+          51.453693
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_02",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 67,
+          "last_updated": "2026-05-23T11:35:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.47027,
+          51.447153
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_03",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 64,
+          "last_updated": "2026-05-23T12:06:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.46029,
+          51.44844
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_04",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 69,
+          "last_updated": "2026-05-23T11:10:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.471576,
+          51.444223
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_05",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.25,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": 11,
+          "last_updated": "2026-05-23T11:05:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.483225,
+          51.435696
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_06",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 45,
+          "last_updated": "2026-05-23T10:29:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.475559,
+          51.43601
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_07",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 43,
+          "last_updated": "2026-05-23T11:58:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.46034,
+          51.447095
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_08",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 3.0,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": 19,
+          "last_updated": "2026-05-23T10:57:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.473268,
+          51.442291
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_09",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.5,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 79,
+          "last_updated": "2026-05-23T10:57:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.43135,
+          51.443953
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_10",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 43,
+          "last_updated": "2026-05-23T11:49:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.463052,
+          51.421101
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_11",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:42:54Z",
+          "battery_level": 98,
+          "last_updated": "2026-05-23T10:26:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.467465,
+          51.409253
+        ]
+      },
+      "properties": {
+        "id": "dott_bike_12",
+        "type": "bike",
+        "provider": "Dott",
+        "vehicle": "E-bike",
+        "price_per_20min_eur": 3.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 81,
+          "last_updated": "2026-05-23T11:20:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.447859,
+          51.413443
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_01",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T11:19:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.472216,
+          51.434711
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_02",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.0,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:47:54Z",
+          "battery_level": null,
+          "last_updated": "2026-05-23T12:04:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.429339,
+          51.449665
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_03",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T12:04:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.455065,
+          51.446582
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_04",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T10:46:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.458573,
+          51.450006
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_05",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T10:27:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.437768,
+          51.45515
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_06",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T11:31:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.480038,
+          51.415788
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_07",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T12:18:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.423915,
+          51.448795
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_08",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T10:32:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.455839,
+          51.409789
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_09",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T12:08:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.471384,
+          51.43986
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_10",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T10:40:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.488937,
+          51.441598
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_11",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T11:11:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.480295,
+          51.451347
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_12",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T10:45:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.433965,
+          51.452833
+        ]
+      },
+      "properties": {
+        "id": "ov_fiets_bike_13",
+        "type": "bike",
+        "provider": "OV-fiets",
+        "vehicle": "bike",
+        "price_per_20min_eur": 1.25,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T11:31:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.48095,
+          51.446063
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_01",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 53,
+          "last_updated": "2026-05-23T11:09:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.481421,
+          51.444355
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_02",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 90,
+          "last_updated": "2026-05-23T11:18:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.449362,
+          51.408808
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_03",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 67,
+          "last_updated": "2026-05-23T11:26:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.468467,
+          51.432291
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_04",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.5,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:25:54Z",
+          "battery_level": 46,
+          "last_updated": "2026-05-23T11:27:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.449917,
+          51.421012
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_05",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.25,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 54,
+          "last_updated": "2026-05-23T11:21:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.479253,
+          51.436835
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_06",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 44,
+          "last_updated": "2026-05-23T11:22:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.449406,
+          51.422119
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_07",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 74,
+          "last_updated": "2026-05-23T10:31:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.485071,
+          51.435933
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_08",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 66,
+          "last_updated": "2026-05-23T11:16:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.473049,
+          51.433647
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_09",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 40,
+          "last_updated": "2026-05-23T11:29:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.4641,
+          51.452841
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_10",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.75,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 66,
+          "last_updated": "2026-05-23T10:38:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.425418,
+          51.452931
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_11",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.5,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:42:54Z",
+          "battery_level": 43,
+          "last_updated": "2026-05-23T10:44:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.456143,
+          51.43248
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_12",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.0,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": 16,
+          "last_updated": "2026-05-23T11:58:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.487027,
+          51.440078
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_13",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 44,
+          "last_updated": "2026-05-23T10:52:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.49854,
+          51.451057
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_14",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 77,
+          "last_updated": "2026-05-23T11:02:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.483147,
+          51.43582
+        ]
+      },
+      "properties": {
+        "id": "felyx_scooter_15",
+        "type": "scooter",
+        "provider": "Felyx",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 60,
+          "last_updated": "2026-05-23T10:19:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.46198,
+          51.426325
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_01",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.0,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 35,
+          "last_updated": "2026-05-23T11:31:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.465864,
+          51.449382
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_02",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 91,
+          "last_updated": "2026-05-23T10:55:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.466092,
+          51.431679
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_03",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.5,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T10:26:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.472141,
+          51.436154
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_04",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 57,
+          "last_updated": "2026-05-23T11:42:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.427126,
+          51.452917
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_05",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.0,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": null,
+          "last_updated": "2026-05-23T11:16:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.456016,
+          51.454082
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_06",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 93,
+          "last_updated": "2026-05-23T11:43:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.472616,
+          51.438336
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_07",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 50,
+          "last_updated": "2026-05-23T10:44:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.466218,
+          51.432057
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_08",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 100,
+          "last_updated": "2026-05-23T10:25:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.421261,
+          51.442683
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_09",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 75,
+          "last_updated": "2026-05-23T12:00:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.462293,
+          51.425418
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_10",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 95,
+          "last_updated": "2026-05-23T12:13:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.481238,
+          51.448151
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_11",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.25,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 69,
+          "last_updated": "2026-05-23T11:07:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.490517,
+          51.451096
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_12",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 6.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 99,
+          "last_updated": "2026-05-23T11:48:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.495269,
+          51.459643
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_13",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 41,
+          "last_updated": "2026-05-23T11:56:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.486887,
+          51.411644
+        ]
+      },
+      "properties": {
+        "id": "check_scooter_14",
+        "type": "scooter",
+        "provider": "Check",
+        "vehicle": "E-scooter",
+        "price_per_20min_eur": 7.25,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:47:54Z",
+          "battery_level": 95,
+          "last_updated": "2026-05-23T10:35:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.481978,
+          51.459503
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_01",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 3.25,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": 17,
+          "last_updated": "2026-05-23T11:36:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.49926,
+          51.44673
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_02",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 56,
+          "last_updated": "2026-05-23T12:14:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.484571,
+          51.439346
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_03",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": 16,
+          "last_updated": "2026-05-23T12:04:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.460094,
+          51.450766
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_04",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 3.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 40,
+          "last_updated": "2026-05-23T11:12:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.492986,
+          51.453077
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_05",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 3.25,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 62,
+          "last_updated": "2026-05-23T11:53:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.468285,
+          51.4457
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_06",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 60,
+          "last_updated": "2026-05-23T10:54:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.458515,
+          51.419395
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_07",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 66,
+          "last_updated": "2026-05-23T11:37:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.457546,
+          51.427957
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_08",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 3.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 100,
+          "last_updated": "2026-05-23T11:30:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.441543,
+          51.45625
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_09",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 75,
+          "last_updated": "2026-05-23T10:32:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.478598,
+          51.437869
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_10",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 3.0,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:34:54Z",
+          "battery_level": 81,
+          "last_updated": "2026-05-23T11:19:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.465223,
+          51.431756
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_11",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 3.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 90,
+          "last_updated": "2026-05-23T10:44:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.480309,
+          51.435848
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_12",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 3.25,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 41,
+          "last_updated": "2026-05-23T12:07:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.475276,
+          51.420023
+        ]
+      },
+      "properties": {
+        "id": "cargoroo_bakfiets_13",
+        "type": "bakfiets",
+        "provider": "Cargoroo",
+        "vehicle": "E-bakfiets",
+        "price_per_20min_eur": 2.75,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 32,
+          "last_updated": "2026-05-23T12:00:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.480359,
+          51.44458
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_01",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 35,
+          "last_updated": "2026-05-23T10:21:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.481064,
+          51.414129
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_02",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 75,
+          "last_updated": "2026-05-23T11:02:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.463851,
+          51.452553
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_03",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:40:54Z",
+          "battery_level": 97,
+          "last_updated": "2026-05-23T11:24:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.485374,
+          51.415957
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_04",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 70,
+          "last_updated": "2026-05-23T11:21:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.467753,
+          51.447472
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_05",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 73,
+          "last_updated": "2026-05-23T11:16:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.422712,
+          51.444943
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_06",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 57,
+          "last_updated": "2026-05-23T11:36:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.457767,
+          51.450402
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_07",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.5,
+        "reservation_status": {
+          "state": "maintenance",
+          "reserved_until": null,
+          "battery_level": 6,
+          "last_updated": "2026-05-23T12:10:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.464318,
+          51.428309
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_08",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 93,
+          "last_updated": "2026-05-23T11:25:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.473921,
+          51.452698
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_09",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 96,
+          "last_updated": "2026-05-23T10:41:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.452996,
+          51.448586
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_10",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:37:54Z",
+          "battery_level": 64,
+          "last_updated": "2026-05-23T11:10:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.472146,
+          51.415923
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_11",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.5,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 34,
+          "last_updated": "2026-05-23T11:44:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.461723,
+          51.42529
+        ]
+      },
+      "properties": {
+        "id": "greenwheels_car_12",
+        "type": "car",
+        "provider": "Greenwheels",
+        "vehicle": "Auto",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 65,
+          "last_updated": "2026-05-23T10:46:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.472593,
+          51.428375
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_01",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:37:54Z",
+          "battery_level": 100,
+          "last_updated": "2026-05-23T11:46:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.478706,
+          51.414406
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_02",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 100,
+          "last_updated": "2026-05-23T11:34:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.489146,
+          51.435686
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_03",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 41,
+          "last_updated": "2026-05-23T11:47:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.473048,
+          51.435204
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_04",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 82,
+          "last_updated": "2026-05-23T12:04:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.444481,
+          51.443923
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_05",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "reserved",
+          "reserved_until": "2026-05-23T12:43:54Z",
+          "battery_level": 50,
+          "last_updated": "2026-05-23T11:01:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.439445,
+          51.424367
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_06",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 59,
+          "last_updated": "2026-05-23T12:05:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.440153,
+          51.45672
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_07",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 2.25,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 64,
+          "last_updated": "2026-05-23T11:28:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.489802,
+          51.447975
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_08",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 35,
+          "last_updated": "2026-05-23T12:05:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.443949,
+          51.445428
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_09",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 90,
+          "last_updated": "2026-05-23T11:06:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.464277,
+          51.411944
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_10",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 2.0,
+       "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 52,
+          "last_updated": "2026-05-23T10:56:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.471447,
+          51.453496
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_11",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 63,
+          "last_updated": "2026-05-23T10:57:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.478825,
+          51.451896
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_12",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 1.75,
+        "reservation_status": {
+          "state": "in_use",
+          "reserved_until": null,
+          "battery_level": 53,
+          "last_updated": "2026-05-23T10:55:54Z"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.465763,
+          51.453082
+        ]
+      },
+      "properties": {
+        "id": "mywheels_car_13",
+        "type": "car",
+        "provider": "MyWheels",
+        "vehicle": "electric_car",
+        "price_per_20min_eur": 2.0,
+        "reservation_status": {
+          "state": "available",
+          "reserved_until": null,
+          "battery_level": 67,
+          "last_updated": "2026-05-23T10:33:54Z"
+        }
+      }
+    }
+  ]
+}
+
+
+
+
+
+ var autoIcon = L.icon({
+    iconUrl: 'auto_icoon.png',
+    iconSize: [32, 32],
+    
+    popupAnchor: [-3, -76],
+    
+});
+ 
+var bikeIcon = L.icon({
+    iconUrl: 'fiets_icoon.png',
+    iconSize: [32, 32],
+    
+    popupAnchor: [-3, -76],
+   
+});
+var bakfietsIcon = L.icon({
+    iconUrl: 'bakfiets_icoon.png',
+    iconSize: [32, 32],
+    
+    popupAnchor: [-3, -76],
+    
+});
+var scooterIcon = L.icon({
+    iconUrl: 'scooter_icoon.png',
+    iconSize: [32, 32],
+ 
+    popupAnchor: [-3, -76],
+    
+});
+
+var ovIcon = L.icon({
+    iconUrl: 'Logo-NS.png',
+    iconSize: [38, 38],
+    popupAnchor: [-3, -76]
+});
+
+L.marker([51.45111084,5.455833435], {icon: ovIcon}).addTo(map);
+L.marker([51.44333267,5.481389046 ], {icon: ovIcon}).addTo(map);
+
+var currentIcon = L.icon({
+    iconUrl: 'current-location-10.png',
+    iconSize: [40, 40]
+})
+var dynamo = [51.4376540556626, 5.48053553603363];
+
+// een knopje onder zoomin/out als 'fake gps knop'
+L.easyButton('<img src="center-direction.jpg" width="100%" height="70%">', function(btn, map){
+    
+    map.setView(dynamo, 17);
+    L.marker(dynamo, {icon: currentIcon}).addTo(map)
+}).addTo(map);
+
+// een knopje daaronder: terug naar homepage
+L.easyButton('<img src="homepage.png" width="100%" height="70%">', function(btn, map){
+    
+  //
+  // HEY SASHA HIER JOUW HOMEPAGE  ik heb voor nu index.html gedaan
+  
+  
+  window.location.replace("index.html");
+
+}).addTo(map);
+// create the GeoJSON layer and call the styling function with each marker
+
+
+
+
+var vehicleLayer = L.geoJSON(vehicles, {
+
+  pointToLayer: function (feature, latlng) {
+
+
+    const div = document.createElement("div");
+    const vP = document.createElement("p")
+    const price = document.createElement("p")
+    vP.innerHTML = `${feature.properties.provider}  ${feature.properties.type}`
+    price.innerHTML = `€${feature.properties.price_per_20min_eur} per 20 min<br>`;
+
+    //styling popup 
+    vP.style.fontSize = "1.4em"
+
+    const searchHub = document.createElement("button");
+    searchHub.innerHTML = "Naar hub";
+
+    const button = document.createElement("button");
+    button.innerHTML = "Reserveren";
+
+    searchHub.onclick = function() {
+      // const line = L.polyline([latlng, [10, 5]]);
+      // line.addTo(map);
+      let nearestHub = null;
+  let shortestDistance = Infinity;
+
+  hubs.features.forEach(hub => {
+
+    const hubLatLng = [
+      hub.geometry.coordinates[1], // lat
+      hub.geometry.coordinates[0]  // lng
+    ];
+
+    const distance = map.distance(latlng, hubLatLng);
+
+    if (distance < shortestDistance) {
+      shortestDistance = distance;
+      nearestHub = hubLatLng;
+    }
+
+  });
+
+  if (nearestHub) {
+
+
+    L.Routing.control({
+        waypoints: [
+          latlng, nearestHub //hier kan je ook 3 of meer coordinaten toevoegen
+        ],
+        createMarker: function() { return null; }
+    }).addTo(map);
+
+   
+    
+   
+    
+
+    // optional: highlight the hub
+    L.circleMarker(nearestHub, {
+      color: 'green',
+      fillColor: 'green',
+      fillOpacity: 0.3,
+      radius: 30
+    }).addTo(map);
+
+  }
+
+}
+    div.appendChild(vP);
+    div.appendChild(price);
+    div.appendChild(searchHub);
+    div.appendChild(button);
+    
+
+     //return L.marker(latlng).bindPopup(div);
+     return L.marker(latlng, {
+       icon: iconByVehicle(feature)
+     }).bindPopup(div);
+
+    
+
+  
+
+  }
+
+}).addTo(map);
+
+function iconByVehicle(feature) {
+
+  if (feature.properties.type === "car") {
+    return autoIcon;
+
+  } else if (feature.properties.type === "bakfiets") {
+    return bakfietsIcon;
+
+  } else if (feature.properties.type === "scooter") {
+    return scooterIcon;
+  }
+
+  return bikeIcon;
+}
+
+function neergevallen(feature) {
+  const coordinates = [
+  feature.geometry.coordinates[1], // latitude
+  feature.geometry.coordinates[0]  // longitude
+];
+  if (feature.properties.reservation_status.state === "in_use") {
+    var circle = L.circleMarker(coordinates, {
+    color: '252, 134, 104',
+    fillColor: '#f03',
+    fillOpacity: 0.3,
+    radius:20
+    }).addTo(map);
+
+
+  } else {
+    console.log("alright")
+  }
+  
+}
+vehicles.features.forEach(feature => {
+  neergevallen(feature);
+});
+function highlightHub(hubCoordinates) {
+  L.circleMarker(hubCoordinates, {
+    color: 'green',
+    fillColor: 'green',
+    fillOpacity: 0.5,
+    radius: 20
+  }).addTo(map);
+}
+
+
+
+
+</script>
+</body>
+
+
+</html>
